@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+#bg-image {
+  opacity: 0.4;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  z-index: -2;
+}
+
+/* SIDE PANEL CARDS */
+.card {
+  width: 3em;
+  height: 3em;
+  background-color: #FECACA;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 0.375rem;
+  transition: all 0.2s ease-in-out;
+  /* How to ignore hover on touch devices
+  https://stackoverflow.com/questions/23885255/how-to-remove-ignore-hover-css-style-on-touch-devices */
+}
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: scale(1.1);
+    background-image: linear-gradient(to right, #ff6663, #feb144, #ffde53, #9ee09e, #9ec1cf, #cc99c9, #9ec1cf, #9ee09e, #ffde53, #feb144, #ff6663);
+    animation: scroll-right 70s linear infinite;
+    transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}
+
+.circle-container-inner {
+  width: 20vh;
+  height: 40vh;
+  border-radius: 50%;
+  list-style: none;
+  z-index: 1;
+  position: absolute;
+  top: 40%;
+  left: -10rem;
+}
+.circle-container-inner > * {
+  display: block;
+  width: 6em;
+  height: 6em;
+  margin: -3em;
+}
+.circle-container-inner > *:nth-of-type(1) {
+  transform: rotate(-90deg) translate(20vh);
+}
+.circle-container-inner > *:nth-of-type(2) {
+  transform: rotate(-30deg) translate(20vh);
+}
+.circle-container-inner > *:nth-of-type(3) {
+  transform: rotate(30deg) translate(20vh);
+}
+
+.circle-container-outer {
+  width: 15em;
+  height: 30em;
+  border-radius: 50%;
+  list-style: none;
+  position: absolute;
+  top: 40%;
+  left: 0;
+}
+.circle-container-outer > * {
+  display: block;
+  width: 3em;
+  height: 3em;
+  margin: -1.5em;
+}
+.circle-container-outer > *:nth-of-type(1) {
+  transform: rotate(-90deg) translate(15em);
+}
+.circle-container-outer > *:nth-of-type(2) {
+  transform: rotate(-67.5deg) translate(15em);
+}
+.circle-container-outer > *:nth-of-type(3) {
+  transform: rotate(-45deg) translate(15em);
+}
+.circle-container-outer > *:nth-of-type(4) {
+  transform: rotate(-22.5deg) translate(15em);
+}
+.circle-container-outer > *:nth-of-type(5) {
+  transform: rotate(0deg) translate(15em);
+}
+.circle-container-outer > *:nth-of-type(6) {
+  transform: rotate(22.5deg) translate(15em);
+}
+.circle-container-outer > *:nth-of-type(7) {
+  transform: rotate(45deg) translate(15em);
+}
+.circle-container-outer > *:nth-of-type(8) {
+  transform: rotate(67.5deg) translate(15em);
+}
+
+/* WIGGLY TEXT */
+.wiggly-text {
+  display: flex;
+  --char-color: #ff6663;
+}
+
+.indent {
+  min-width: 0.5rem;
+}
+
+.wiggly-char {
+  font-size: 5rem;
+  font-family: "Pacifico", cursive;
+  font-weight: bolder;
+}
+.wiggly-char:hover {
+  color: var(--char-color);
+  transform-origin: center;
+  transform: scale(1.5);
+  transition: scale 2s ease;
+  animation: center-animate 2s linear ease-in-out;
+  transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes scroll-right {
+  100% {
+    background-position: -3000px 0px;
+  }
+}
+@keyframes center-animate {
+  0% {
+    transform: scaleX(0.1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
